@@ -1,12 +1,12 @@
 require 'pry'
 
 class Museum
-  attr_reader :name, :exhibits, :patron
+  attr_reader :name, :exhibits, :patrons
 
   def initialize(name)
     @name = name
     @exhibits = []
-    @patron = []
+    @patrons = []
   end
 
   def add_exhibit(exhibit)
@@ -19,5 +19,9 @@ class Museum
       recommends << exhibit if patron.interests.include?(exhibit.name)
     end
     recommends
+  end
+
+  def admit(patron)
+    @patrons << patron
   end
 end

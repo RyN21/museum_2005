@@ -39,7 +39,7 @@ class MuseumTest < Minitest::Test
     assert_equal [@imax], @dmns.recommend_exhibits(@patron_2)
   end
 
-  def test_it_can_admit
+  def test_it_can_admit_patron
     @patron_3 = Patron.new("Johnny", 5)
     @patron_3.add_interest("Dead Sea Scrolls")
     @dmns.admit(@patron_1)
