@@ -51,11 +51,17 @@ class MuseumTest < Minitest::Test
   end
 
   def test_it_has_patron_by_exhibit_interest
-    expected = {
-                @gems_and_minerals: [@patron_1],
-                @dead_sea_scrolls: [@patron_1, @patron_3],
-                @imax: [@patron_2]
-               }
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+    expected = ({
+                :@gems_and_minerals => [@patron_1],
+                :@dead_sea_scrolls => [@patron_1, @patron_3],
+                :@imax => [@patron_2]
+               })
     assert_equal expected, @dmns.patrons_by_exhibit_interest
   end
 end
